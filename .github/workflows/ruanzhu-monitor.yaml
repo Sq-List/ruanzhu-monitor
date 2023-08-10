@@ -1,0 +1,26 @@
+name: monitor
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+# on: push
+
+jobs:
+  first:
+    name: get request
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: szenius/set-timezone@v1.0 # 设置执行环境的时区
+        with:
+          timezoneLinux: "Asia/Shanghai"
+      - uses: actions/setup-python@v4 # 使用python装配器
+        with:
+          python-version: '3.7' # 指定python版本
+          # cache: 'poetry' # 设置缓存
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+      - name: Run
+        run: python run.py
