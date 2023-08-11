@@ -35,7 +35,7 @@ def exec(key, token):
         'cache-control': "no-cache"
     }
 
-    response = requests.request("GET", url, headers=headers)
+    response = requests.request("GET", url, headers=headers, timeout=10)
 
     wx_push_client = WxPushClient()
     if response.status_code == 200:
