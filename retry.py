@@ -14,6 +14,6 @@ def retry(times):
                     print('重试： '+ str(i))
                     i += 1
                     print('暂停10秒')
-                    time.sleep(10000)
+                    time.sleep(10)
         return inner_wrapper
     return wrapper

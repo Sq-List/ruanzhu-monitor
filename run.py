@@ -51,7 +51,8 @@ def exec(key, token):
             last_update_time = datetime.fromtimestamp(create_time / 1000)
             now = datetime.now()
 
-            diff = (now - last_update_time).seconds / 60
+            # print((now - last_update_time))
+            diff = (now - last_update_time).total_seconds() / 60
             print("diff: ", diff)
             if diff < 30:
                 wx_push_client.push("软著状态变更", "状态："+",".join(state), [11144])
