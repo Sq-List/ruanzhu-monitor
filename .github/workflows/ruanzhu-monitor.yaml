@@ -5,6 +5,9 @@ on:
     - cron: '*/10 7-18 * * 1-5'
 # on: push
 
+env:
+  TZ: Asia/Shanghai
+
 jobs:
   first:
     name: monitor
