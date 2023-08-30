@@ -54,9 +54,9 @@ def exec(key, token):
             # print((now - last_update_time))
             diff = (now - last_update_time).total_seconds() / 60
             print("diff: ", diff)
-            if diff < 30:
+            if diff < 120:
                 wx_push_client.push("软著状态变更", "状态："+",".join(state), [11144])
-            elif now.hour == 8 and now.min <= 20:
+            elif now.hour == 12 and now.min <= 20:
                 wx_push_client.push("每日软著状态提醒", "状态："+",".join(state), [11144])
         except Exception as e:
             print(str(e))
