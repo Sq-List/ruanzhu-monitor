@@ -7,7 +7,7 @@ from wx_push import WxPushClient
 from retry import retry
 
 @retry(10)
-def exec(key, token):
+def exec(app_token, key, token):
     print("key: ", key, ", token: ", token)
     url = "https://gateway.ccopyright.com.cn/registerQuerySoftServer/userCenter/flowNumberHistory/495622356396584960/2023R11L1375707"
 
@@ -37,7 +37,7 @@ def exec(key, token):
 
     response = requests.request("GET", url, headers=headers, timeout=10)
 
-    wx_push_client = WxPushClient()
+    wx_push_client = WxPushClient(app_token=app_token)
     if response.status_code == 200:
         try:
             data = response.json()
@@ -73,4 +73,4 @@ def exec(key, token):
 
 
 if __name__ == '__main__':
-    exec(sys.argv[1], sys.argv[2])
+    exec(sys.argv[1], sys.argv[2], sys.argv[2])

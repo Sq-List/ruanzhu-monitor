@@ -3,7 +3,8 @@ import json
 
 class WxPushClient:
 
-    def __init__(self):
+    def __init__(self, app_token):
+        self.app_token = app_token
         self.url = 'https://wxpusher.zjiecode.com/api/send/message'
     
     def push(self, summary, content, topics):
@@ -11,7 +12,7 @@ class WxPushClient:
             'Content-Type': 'application/json'
         }
         params = {
-            'appToken': 'AT_RG34cndHOzAUVMi8zzqjRBPVaBfBZSM7',
+            'appToken': self.app_token,
             'content': content,
             'summary': summary,
             'contentType': 1,
@@ -30,6 +31,6 @@ class WxPushClient:
             print("微信推送失败, 抛出异常, params: ", params, ", err: ", err)
 
 
-if __name__ == '__main__':
-    wx_push_client = WxPushClient()
-    wx_push_client.push('test', 'test')
+# if __name__ == '__main__':
+#     wx_push_client = WxPushClient()
+#     wx_push_client.push('test', 'test')
