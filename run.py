@@ -37,6 +37,7 @@ def exec(app_token, key, token):
 
     response = requests.request("GET", url, headers=headers, timeout=10)
 
+    print(response.json())
     wx_push_client = WxPushClient(app_token=app_token)
     if response.status_code == 200:
         try:
